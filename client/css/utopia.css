@@ -1,0 +1,428 @@
+html {
+    max-width: 1366px;
+}
+body {
+    margin: 0 auto;
+}
+body .container{
+	height: 86px;
+	max-width: 1366px;
+	width: 100%;
+	padding:0;
+}
+
+.utopia_header.container{
+	min-height: 86px;
+	background-color: #fff;
+	text-align: center;
+	box-shadow: 0px 1px 0px 0px #888888;
+}
+
+
+.utopia_header img {
+    height: 67px;
+    width: auto;
+}
+
+.utopia_body_inner {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #dbdbdb #dbdbdb;
+    border-image: none;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    box-shadow: 0 5px 6px -2px;
+    margin-bottom: 60px;
+    margin-left: 155px;
+    margin-right: 155px;
+    padding-top: 93px;
+    text-align: center;
+}
+
+.utopia_body {
+    background-image: url("/home/kashyap/utopia/images/284207725-bg-pattern.png");
+}
+
+.utopia_body_inner h1 {
+    color: #bf9959;
+    font-family: "FiraSansOTBold";
+    font-size: 36pt;
+    margin: 0;
+    padding-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.utopia_body_inner h1::after {
+    background: #bf9959 none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 10px;
+    left: 0;
+    margin: 14px auto 48px;
+    position: relative;
+    right: 0;
+    width: 44px;
+}
+
+/*.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}*/
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+    display: block;
+    height: 30px;
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -15px;
+    padding-top: 5px;
+    position: absolute;
+    margin-top: -19px;
+    top: 25px;
+    width: 30px;
+}
+
+/*.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #fbbd19; border-radius: 50px; position: absolute; top: 8px; left: 8px; } */
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 2px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #fbe8aa;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+
+.utopia_body_content {
+    margin-left: 215px;
+    margin-right: 215px;
+    padding-top: 56px;
+    text-align: left;
+}
+
+.row.utopia_content_row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.utopia_body_content label {
+    display: block;
+    font-family: "Helvetica Neue Light";
+	font-size: 19pt;
+	color: #8c8c8c;
+}
+
+#utopia_button_next {
+    background-color: #000118;
+    border: medium none;
+    color: #bf9959;
+    font-size: 40pt;
+    height: 72px;
+    margin-top: 81px;
+    max-width: 1058px;
+    width: 100%;
+    font-family: "FiraSans OT Medium";
+}
+
+#name_utopia, #email_utopia, #profession_utopia, #city_utopia {
+    color: #333333;
+    font-size: 20pt;
+    font-family: "Helvetica Neue Light";
+    width: 627px;
+}
+
+#name_utopia, #email_utopia, #profession_utopia, #city_utopia {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: -moz-use-text-color -moz-use-text-color #bf9959;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    color: #333333;
+    font-family: "Helvetica Neue Light";
+    font-size: 20pt;
+    width: 100%;
+}
+
+ 
+
+#about_utopia {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: -moz-use-text-color -moz-use-text-color #bf9959;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    font-family: "Helvetica Neue Light";
+    text-align: center;
+    color: #666666;
+    font-size: 20pt;
+
+}
+
+#password_utopia, #confirm_utopia, .fields_input {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: -moz-use-text-color -moz-use-text-color #bf9959;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    color: #333333;
+    font-family: "Helvetica Neue Light";
+    font-size: 30pt;
+    max-width: 250px;
+    width: 100%;
+    word-spacing: 11px;
+}
+
+#name_utopia{
+	padding-bottom: 9px;
+	margin-top: 23px;
+	margin-bottom: 21px;
+    font-family:  "Helvetica Neue Light";
+    font-size:  20pt;
+    color: #333333;
+    text-align: left;
+}
+
+#email_utopia{
+	margin-top: 24px;
+	padding-bottom: 9px;
+}
+
+#password_label{
+	margin-top: 23px;
+}
+
+#confirm_label{
+	margin-top:	20px;
+}
+
+/**************Accordin Start*****************/
+
+button.accordion {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #fff;
+    border-color: -moz-use-text-color -moz-use-text-color #bf9959;
+    border-image: none;
+    border-style: none none solid;
+    border-width: medium medium 1px;
+    color: #333333;
+    cursor: pointer;
+    font-family: "FiraSans OT Light";
+    font-size: 24pt;
+    outline: medium none;
+    text-align: left;
+    transition: all 0.4s ease 0s;
+    width: 100%;
+}
+
+button.accordion.active {
+    border-bottom: none;
+}
+
+button.accordion:after {
+    content: '\02795';
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+button.accordion.active:after {
+    content: "\2796";
+}
+
+div.panel_utopia {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.6s ease-in-out;
+    opacity: 0;
+}
+
+div.panel_utopia.show {
+    border-bottom: 1px solid #bf9959;
+    margin-bottom: 0;
+    max-height: 500px;
+    opacity: 1;
+    padding-bottom: 20px;
+    padding-top: 52px;
+}
+
+/******************END**********************/
+
+.utopia_accordin {
+    margin-left: 217px;
+    margin-right: 217px;
+}
+
+.panel{
+	margin-bottom: 0px;
+}
+
+#utopia_button_done{
+	max-width: 1058px;
+	width: 100%;
+	height: 72px;
+	font-size: 40pt;
+	color: #bf9959;
+	margin-bottom: 39px;
+	font-family: "FiraSans OT Medium";
+	background-color: #000118;
+    border: medium none;
+    color: #bf9959;
+    font-size: 40pt;
+    margin-top: 72px;
+}
+
+#interest_utopia{
+	color:	#bf9959;
+	font-family: "FiraSans OT Light";
+	font-size: 50pt;
+}
+
+#interests_utopia{
+	font-family: "FiraSans OT Medium";
+}
+
+.utopia_body_inner h2 {
+    margin-bottom: 93px;
+    margin-top: 0px;
+}
+
+#news_accordin{
+	padding-bottom: 15px;
+}
+
+#art_accordin{
+	margin-top: 98px;
+	padding-bottom: 15px;
+}
+
+#health_accordin{
+	margin-top: 102px;
+	padding-bottom: 14px;
+}
+
+#food_accordin{
+	margin-top: 103px;
+	padding-bottom: 14px;
+}
+
+#sports_accordin{
+	margin-top: 103px;
+	padding-bottom: 14px;
+}
+
+#tech_accordin{
+	margin-top: 103px;
+	padding-bottom: 14px;
+}
+
+.utopia_selected {
+    color: #bf9959;
+    font-family: "FiraSans OT Light";
+    font-size: 20pt;
+    margin-bottom: 28px;
+    margin-right: 8px;
+    width: 186px;
+}
+
+.selected_button{
+	color:#000000;
+	background-color: red;
+}
+
+.utopia_body_inner i {
+    border: 2px solid #eee;
+    color: #c3c3c3;
+    font-size: 30px;
+    margin-top: 128px;
+    padding: 20px;
+}
+
+
+.header_wrapper {
+    border-bottom: 1px solid #d9d9d9;
+    box-shadow: 0 4px 7px -6px;
+}
+.title_utopia{
+    font-family: firasansot bold;
+    font-size: 36pt;
+    color: #bf9959;
+    text-align: center;
+}
+.horizontal_row {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 314px;
+}
+.body_page_second {
+    padding-top: 111px;
+}
+
+/** normal style **/
+    .utopia_selected{
+        font-family: "FiraSans OT Light"
+        font-size: 20pt;
+        color: #ffffff;
+        text-align: center;
+        background: #bf9959;
+        float: left;
+    }
+
+    /** on active **/
+
+.utopia_selected:focus{
+        font-family: "FiraSans OT Light"
+        font-size: 20pt;
+        color: #ffffff;
+        text-align: center;
+        background: #000000;
+        float: left;
+    }
+
+@media screen and (min-width: 375px) and (max-width: 667px){
+    .utopia_body_inner{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .bs-wizard > .bs-wizard-step:last-child > .progress {
+    left: 15%;
+    top: -1px;
+    width: 36%;
+}
+.bs-wizard > .bs-wizard-step:first-child > .progress {
+    float: left;
+    left: 15%;
+    width: 36%;
+}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+    left: 12%;
+}
+.next_page {
+    left: 91% !important;
+    top: 4px !important;
+}
+.utopia_body_content {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#password_utopia, #confirm_utopia, .fields_input {
+    max-width: 310px;
+}
+.utopia_accordin {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+div.panel_utopia.show {
+    max-height: 690px;
+}
+}

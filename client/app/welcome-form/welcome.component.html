@@ -1,0 +1,173 @@
+
+<div class="utopia">
+	<div class="utopia_header">
+		<div class="container header_wrapper">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<img src="images/images.png">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="new">
+	<div class="utopia_body">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					
+          <div class="utopia_body_inner" *ngIf="shownext">
+            <form (ngSubmit)="step1()" #stepOneForm="ngForm">
+    						<div class="title_utopia">
+    							<h1>Welcome To Utopia</h1>
+    						</div>
+    						<div class="row bs-wizard">
+                    			<div class="col-md-6 bs-wizard-step complete">
+                      				<div class="progress">
+                      					<div class="progress-bar">
+                      					
+                      					</div>
+                      				</div>
+                      					<a href="#" class="bs-wizard-dot">1</a>
+                    			</div>
+                    			<div class="col-md-6 bs-wizard-step complete"><!-- complete -->
+                      				<div class="progress">
+                      					<div class="progress-bar">
+                      						
+                      					</div>
+                      				</div>
+                      					<a href="#" class="bs-wizard-dot next_page">2</a>
+                  				</div>
+                  			</div>
+                  			<div class="row">
+                  				<i class="fa fa-camera" aria-hidden="true"></i>
+                  			</div>
+                  			<div class="utopia_body_content">
+                  					<div class="row utopia_content_row">
+                  						<div class="col-md-12">
+                  							<div class="form-group">
+                                  <label>Name</label>
+                  							  <input class="input_fields" id="name_utopia" [(ngModel)]="person.name" type="text" name="name">
+                  							</div>
+
+                                <div class="form-group">
+                                  <label>E-mail Address</label>
+                  							  <input class="input_fields" id="email_utopia" type="email" [(ngModel)]="person.email" name="email">
+                  							</div>
+
+                                <div class="user_info">
+                  								<div class="col-md-6">
+                                    <div class="form-group">
+                  									 <label id="password_label">Password</label>
+                  									 <input class="fields_input" id="password_utopia" type="password" [(ngModel)]="person.password" name="pasword">
+                                    </div>
+                  									<div class="form-group">
+                                      <label>Age</label>
+                  									  <input class="fields_input" id="age_utopia" type="text" name="age" [(ngModel)]="person.age">
+                  								  </div>
+                                  </div>
+                  								<div class="col-md-6">
+                                    <div class="form-group">
+                  									  <label id="confirm_label">Confirm password</label>
+                  									  <input class="fields_input" id="confirm_utopia" type="password" name="confirm-password">
+                  									</div>
+                                    <div class="form-group">
+                                      <label>Gender</label>
+                  									  <input class="fields_input" id="gender_utopia" type="text" name="gender" [(ngModel)]="person.gender">
+                  								  </div>
+                                  </div>
+                  							</div>
+                                <div class="form-group">
+                  							  <label>Profession</label>
+                  							  <input class="input_fields" id="profession_utopia" type="text" name="profession" [(ngModel)]="person.profession">
+                  							</div>
+                                <div class="form-group">
+                                  <label>About</label>
+                  							  <textarea class="input_fields" id="about_utopia" rows="4" name="about" [(ngModel)]="person.about"></textarea>
+                  							</div>
+                                <div class="form-group">
+                                  <label>City</label>
+                  							  <input class="input_fields" id="city_utopia" type="text" name="city" [(ngModel)]="person.city">
+                  						  </div>
+                              </div>
+                  					</div>
+                  			</div>
+                  			<button id="utopia_button_next"  type="submit" [disabled]="!stepOneForm.form.valid">Next</button>
+                   </form>
+					</div>
+
+
+
+          <div class="utopia_body_inner body_page_second" *ngIf="!shownext">
+                  <form (ngSubmit)="step2()" #stepTwoForm="ngForm">
+                    <h2 id="interest_utopia">Choose your <strong id="interests_utopia">Interests</strong></h2>
+                    <div class="utopia_accordin">
+                      <div class="container_wrapper">
+                        <div class="row">
+                          <div class="col-md-12">
+                             <div class="form-group">
+                                <button id="news_accordin" type="button" [ngClass]="{'active': isNewsVisible }"  (click)="isNewsVisible = !isNewsVisible;" class="accordion">NEWS</button>
+                                <div class="panel_utopia" [ngClass]="{'show': isNewsVisible }">
+                              
+                                </div>
+                              </div>
+                             <div class="form-group">
+                              <button id="art_accordin" type="button" [ngClass]="{'active': isArtVisible }" (click)="isArtVisible = !isArtVisible" class="accordion">ART</button>
+                              <div class="panel_utopia" [ngClass]="{'show': isArtVisible }">
+                                <button type="button" class="utopia_selected" (click)="artvalue('Photography')" >Photography</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Poetry')">Poetry</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Sculpture')">Sculpture</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Dance')">Dance</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('History')">History</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Literature')">Literature</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Architecture')">Architecture</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Films')">Films</button>
+                                <button type="button" class="utopia_selected" (click)="artvalue('Theater')">Theater</button>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <button id="health_accordin" type="button" [ngClass]="{'active': isHandwVisible }" (click)="isHandwVisible = !isHandwVisible" class="accordion">HEALTH & WELLNESS</button>
+                              <div id="foo" class="panel_utopia" [ngClass]="{'show': isHandwVisible }">
+                                
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">  
+                              <button id="food_accordin" type="button" [ngClass]="{'active': isFandLVisible }" (click)="isFandLVisible = !isFandLVisible" class="accordion">FOOD & LIQUOR</button>
+                              <div id="foo" class="panel_utopia" [ngClass]="{'show': isFandLVisible }">
+                                
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <button id="sports_accordin" type="button" [ngClass]="{'active': isSportsVisible }" (click)="isSportsVisible = !isSportsVisible" class="accordion">Sports</button>
+                              <div id="foo" class="panel_utopia" [ngClass]="{'show': isSportsVisible }" >
+                                
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <button id="tech_accordin" type="button" [ngClass]="{'active': isTechnologyVisible }" (click)="isTechnologyVisible = !isTechnologyVisible" class="accordion">TECHNOLOGY</button>
+                              <div id="foo" class="panel_utopia" [ngClass]="{'show': isTechnologyVisible }">
+                                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="submit_button">
+                        <button id="utopia_button_done" type="submit" [disabled]="!stepTwoForm.form.valid">Done</button>
+                      </div>
+                    </div>
+                </form>
+          </div>  
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
