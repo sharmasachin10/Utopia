@@ -17,7 +17,7 @@
 				<div class="col-md-12">
 					
           <div class="utopia_body_inner" *ngIf="shownext">
-            <form (ngSubmit)="step1()" #stepOneForm="ngForm">
+            <form (ngSubmit)="step1()"  #stepOneForm="ngForm" >
     						<div class="title_utopia">
     							<h1>Welcome To Utopia</h1>
     						</div>
@@ -47,39 +47,41 @@
                   						<div class="col-md-12">
                   							<div class="form-group">
                                   <label>Name</label>
-                  							  <input class="input_fields" id="name_utopia" [(ngModel)]="person.name" type="text" name="name">
+                  							  <input class="input_fields" id="name_utopia" [(ngModel)]="person.name" type="text" name="name" required>
+                  							  
                   							</div>
+
 
                                 <div class="form-group">
                                   <label>E-mail Address</label>
-                  							  <input class="input_fields" id="email_utopia" type="email" [(ngModel)]="person.email" name="email">
+                  							  <input class="input_fields" id="email_utopia" type="email" [(ngModel)]="person.email" name="email" required>
                   							</div>
 
                                 <div class="user_info">
                   								<div class="col-md-6">
                                     <div class="form-group">
                   									 <label id="password_label">Password</label>
-                  									 <input class="fields_input" id="password_utopia" type="password" [(ngModel)]="person.password" name="pasword">
+                  									 <input class="fields_input" id="password_utopia" type="password" [(ngModel)]="person.password" name="pasword" required>
                                     </div>
                   									<div class="form-group">
                                       <label>Age</label>
-                  									  <input class="fields_input" id="age_utopia" type="text" name="age" [(ngModel)]="person.age">
+                  									  <input class="fields_input" id="age_utopia" type="text" name="age" [(ngModel)]="person.age" required>
                   								  </div>
                                   </div>
                   								<div class="col-md-6">
                                     <div class="form-group">
                   									  <label id="confirm_label">Confirm password</label>
-                  									  <input class="fields_input" id="confirm_utopia" type="password" name="confirm-password">
+                  									  <input class="fields_input" id="confirm_utopia" type="password" name="confirm-password" required>
                   									</div>
                                     <div class="form-group">
                                       <label>Gender</label>
-                  									  <input class="fields_input" id="gender_utopia" type="text" name="gender" [(ngModel)]="person.gender">
+                  									  <input class="fields_input" id="gender_utopia" type="text" name="gender" [(ngModel)]="person.gender" required>
                   								  </div>
                                   </div>
                   							</div>
                                 <div class="form-group">
                   							  <label>Profession</label>
-                  							  <input class="input_fields" id="profession_utopia" type="text" name="profession" [(ngModel)]="person.profession">
+                  							  <input class="input_fields" id="profession_utopia" type="text" name="profession" [(ngModel)]="person.profession" required>
                   							</div>
                                 <div class="form-group">
                                   <label>About</label>
@@ -87,12 +89,12 @@
                   							</div>
                                 <div class="form-group">
                                   <label>City</label>
-                  							  <input class="input_fields" id="city_utopia" type="text" name="city" [(ngModel)]="person.city">
+                  							  <input class="input_fields" id="city_utopia" type="text" name="city" [(ngModel)]="person.city" required>
                   						  </div>
                               </div>
                   					</div>
                   			</div>
-                  			<button id="utopia_button_next"  type="submit" [disabled]="!stepOneForm.form.valid">Next</button>
+                  			<button id="utopia_button_next"  type="submit" >Next</button>
                    </form>
 					</div>
 
