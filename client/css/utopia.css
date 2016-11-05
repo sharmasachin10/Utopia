@@ -180,11 +180,15 @@ body .container{
 #name_utopia{
 	padding-bottom: 9px;
 	margin-top: 23px;
-	margin-bottom: 21px;
+	/*margin-bottom: 21px;*/
     font-family:  "Helvetica Neue Light";
     font-size:  20pt;
     color: #333333;
     text-align: left;
+}
+
+.alert-danger {
+  margin-top: 5px !important;
 }
 
 #email_utopia{
@@ -380,14 +384,26 @@ div.panel_utopia.show {
 
     /** on active **/
 
-.utopia_selected:focus{
+/*.utopia_selected:focus{
         font-family: "FiraSans OT Light"
         font-size: 20pt;
         color: #ffffff;
         text-align: center;
         background: #000000;
         float: left;
-    }
+    }*/
+
+input:required {
+    box-shadow:none !important;
+}
+
+
+.select-cat {
+    background: #000000 none repeat scroll 0 0;
+    color: #ffffff;
+    float: left;
+    text-align: center;
+}
 
 @media screen and (min-width: 375px) and (max-width: 667px){
     .utopia_body_inner{

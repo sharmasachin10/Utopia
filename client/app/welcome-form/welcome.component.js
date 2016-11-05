@@ -15,6 +15,8 @@ var WelcomeComponent = (function () {
     function WelcomeComponent(router, welcomeService) {
         this.router = router;
         this.welcomeService = welcomeService;
+        this.files = [];
+        this.artCategory = [];
         this.shownext = true;
     }
     WelcomeComponent.prototype.ngOnInit = function () {
@@ -22,25 +24,58 @@ var WelcomeComponent = (function () {
             name: '',
             email: '',
             password: '',
+            confirmPassword: '',
             age: null,
             gender: '',
             profession: '',
             about: '',
             city: '',
             news: '',
-            art: '',
+            art: [],
             health: '',
             food: '',
             sports: '',
             technology: ''
         };
+        this.artCategory = [{
+                name: 'Photography',
+                select: false
+            }, {
+                name: 'Poetry',
+                select: false
+            }, {
+                name: 'Sculpture',
+                select: false
+            }, {
+                name: 'History',
+                select: false
+            }, {
+                name: 'Literature',
+                select: false
+            }, {
+                name: 'Architecture',
+                select: false
+            }, {
+                name: 'Films',
+                select: false
+            }, {
+                name: 'Theater',
+                select: false
+            }];
     };
-    WelcomeComponent.prototype.artvalue = function (value) {
-        this.person.art = value;
+    WelcomeComponent.prototype.artvalue = function (value, i) {
+        this.artCategory.forEach(function (item, index) {
+            if (index === i) {
+                item.select = (item.select == true ? false : true);
+            }
+        });
+        this.person.art = this.artCategory;
     };
-    WelcomeComponent.prototype.step1 = function () {
-        this.shownext = false;
-        window.scrollTo(0, 0);
+    WelcomeComponent.prototype.step1 = function (isValid) {
+        if (isValid) {
+            this.shownext = false;
+            window.scrollTo(0, 0);
+        }
     };
     WelcomeComponent.prototype.step2 = function () {
         var _this = this;
@@ -53,6 +88,30 @@ var WelcomeComponent = (function () {
         }, function (error) {
             console.log(error);
         });
+    };
+    WelcomeComponent.prototype.fileChange = function (input) {
+        var _this = this;
+        // Loop through each picture file
+        for (var i = 0; i < input.files.length; i++) {
+            this.files.push(input.files[i]);
+            // Create an img element and add the image file data to it
+            var img = document.createElement("img");
+            img.src = window.URL.createObjectURL(input.files[i]);
+            // Create a FileReader
+            var reader, target;
+            reader = new FileReader();
+            // Add an event listener to deal with the file when the reader is complete
+            reader.addEventListener("load", function (event) {
+                // Get the event.target.result from the reader (base64 of the image)
+                img.src = event.target.result;
+                // Resize the image
+                var resized_img = img;
+                // Push the img src (base64 string) into our array that we display in our html template
+                _this.file_srcs = img.src;
+                console.log(_this.file_srcs);
+            }, false);
+            reader.readAsDataURL(input.files[i]);
+        }
     };
     WelcomeComponent = __decorate([
         core_1.Component({

@@ -17,7 +17,7 @@
 				<div class="col-md-12">
 					
           <div class="utopia_body_inner" *ngIf="shownext">
-            <form (ngSubmit)="step1()"  #stepOneForm="ngForm" >
+            <form (ngSubmit)="step1(stepOneForm.valid)" novalidate  #stepOneForm="ngForm" >
     						<div class="title_utopia">
     							<h1>Welcome To Utopia</h1>
     						</div>
@@ -40,61 +40,93 @@
                   				</div>
                   			</div>
                   			<div class="row">
-                  				<i class="fa fa-camera" aria-hidden="true"></i>
+                  				<label for="img-file">
+                  					<i *ngIf="!file_srcs" class="fa fa-camera" aria-hidden="true"></i>
+                  					<img *ngIf="file_srcs" src="{{file_srcs}}" height="50" width="50">
+                  				</label>
+                  				<input type="file" #input id="img-file"  (change)="fileChange(input)" style="display:none" />
                   			</div>
                   			<div class="utopia_body_content">
                   					<div class="row utopia_content_row">
                   						<div class="col-md-12">
                   							<div class="form-group">
-                                  <label>Name</label>
-                  							  <input class="input_fields" id="name_utopia" [(ngModel)]="person.name" type="text" name="name" required>
-                  							  
+                                  			 	<label>Name</label>
+                  							  	<input class="input_fields" id="name_utopia" [(ngModel)]="person.name" type="text" name="name" #name="ngModel" required>
+										        <div [hidden]="name.valid || (name.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+										            Name is required
+										        </div>
                   							</div>
 
 
-                                <div class="form-group">
-                                  <label>E-mail Address</label>
-                  							  <input class="input_fields" id="email_utopia" type="email" [(ngModel)]="person.email" name="email" required>
-                  							</div>
+			                                <div class="form-group">
+			                                  	<label>E-mail Address</label>
+			                  					<input class="input_fields" id="email_utopia" type="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$" [(ngModel)]="person.email" #email="ngModel"  name="email" required>
+									            <div [hidden]="email.valid || (email.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									              Email is required
+									            </div>
+			                  				</div>
 
-                                <div class="user_info">
-                  								<div class="col-md-6">
-                                    <div class="form-group">
-                  									 <label id="password_label">Password</label>
-                  									 <input class="fields_input" id="password_utopia" type="password" [(ngModel)]="person.password" name="pasword" required>
-                                    </div>
-                  									<div class="form-group">
-                                      <label>Age</label>
-                  									  <input class="fields_input" id="age_utopia" type="text" name="age" [(ngModel)]="person.age" required>
-                  								  </div>
-                                  </div>
-                  								<div class="col-md-6">
-                                    <div class="form-group">
-                  									  <label id="confirm_label">Confirm password</label>
-                  									  <input class="fields_input" id="confirm_utopia" type="password" name="confirm-password" required>
-                  									</div>
-                                    <div class="form-group">
-                                      <label>Gender</label>
-                  									  <input class="fields_input" id="gender_utopia" type="text" name="gender" [(ngModel)]="person.gender" required>
-                  								  </div>
-                                  </div>
+			                                <div class="user_info">
+			                  					<div class="col-md-6">
+				                                    <div class="form-group">
+				                  						<label id="password_label">Password</label>
+				                  						<input class="fields_input" [(ngModel)]="person.password"  validateEqual="confirmPassword" reverse="true" #password="ngModel"  required id="password_utopia" type="password" name="password">
+				                                    	<div [hidden]="password.valid || (password.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									              			Password is required
+									            		</div>
+				                                    </div>
+				                  					<div class="form-group">
+				                                     	<label>Age</label>
+				                  						<input class="fields_input" id="age_utopia" type="text" name="age" #age="ngModel" required [(ngModel)]="person.age">
+				                  						<div [hidden]="age.valid || (age.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									              			Age is required
+									            		</div>
+				                  					</div>
+			                                  	</div>
+			                  					<div class="col-md-6">
+			                                    	<div class="form-group">
+			                  							<label id="confirm_label">Confirm password</label>
+			                  							<input class="fields_input" validateEqual="password" reverse="false" #confirmPassword="ngModel"  id="confirm_utopia" required type="password" name="confirmPassword" [(ngModel)]="person.confirmPassword">
+			                  							<div [hidden]="confirmPassword.valid || (confirmPassword.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									              			Password mismatch
+									            		</div>
+			                  						</div>
+			                                    	<div class="form-group">
+			                                      		<label>Gender</label>
+			                  							<input class="fields_input" id="gender_utopia" type="text" name="gender" #gender="ngModel" required [(ngModel)]="person.gender">
+			                  							<div [hidden]="gender.valid || (gender.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									              			Gender is required
+									            		</div>
+			                  						</div>
+			                                  </div>
+			                  				</div>
+
+
+			                                <div class="form-group">
+			                  					<label>Profession</label>
+			                  					<input class="input_fields" id="profession_utopia" type="text" #profession="ngModel" name="profession" [(ngModel)]="person.profession" required>
+			                  					<div [hidden]="profession.valid || (profession.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									            	Profession is required
+									            </div>
+			                  				</div>
+
+
+                                			<div class="form-group">
+                                  				<label>About</label>
+                  							  	<textarea class="input_fields" id="about_utopia" rows="4" name="about" #about="ngModel" [(ngModel)]="person.about"></textarea>
                   							</div>
-                                <div class="form-group">
-                  							  <label>Profession</label>
-                  							  <input class="input_fields" id="profession_utopia" type="text" name="profession" [(ngModel)]="person.profession" required>
-                  							</div>
-                                <div class="form-group">
-                                  <label>About</label>
-                  							  <textarea class="input_fields" id="about_utopia" rows="4" name="about" [(ngModel)]="person.about"></textarea>
-                  							</div>
-                                <div class="form-group">
-                                  <label>City</label>
-                  							  <input class="input_fields" id="city_utopia" type="text" name="city" [(ngModel)]="person.city" required>
-                  						  </div>
-                              </div>
+                                
+                                			<div class="form-group">
+                                  				<label>City</label>
+                  							  	<input class="input_fields" id="city_utopia" type="text" name="city" #city="ngModel" [(ngModel)]="person.city" required>
+                  						  		<div [hidden]="city.valid || (city.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+									            	City is required
+									            </div>
+                  						  	</div>
+                              			</div>
                   					</div>
-                  			</div>
-                  			<button id="utopia_button_next"  type="submit" >Next</button>
+                  				</div>
+                  				<button id="utopia_button_next" type="submit">Next</button>
                    </form>
 					</div>
 
@@ -116,15 +148,9 @@
                              <div class="form-group">
                               <button id="art_accordin" type="button" [ngClass]="{'active': isArtVisible }" (click)="isArtVisible = !isArtVisible" class="accordion">ART</button>
                               <div class="panel_utopia" [ngClass]="{'show': isArtVisible }">
-                                <button type="button" class="utopia_selected" (click)="artvalue('Photography')" >Photography</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Poetry')">Poetry</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Sculpture')">Sculpture</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Dance')">Dance</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('History')">History</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Literature')">Literature</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Architecture')">Architecture</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Films')">Films</button>
-                                <button type="button" class="utopia_selected" (click)="artvalue('Theater')">Theater</button>
+                                
+                              	 <button type="button"  class="utopia_selected" *ngFor="let category of artCategory; let i = index;" [ngClass]="{'select-cat':category.select}" (click)="artvalue(category.name,i)" >{{category.name}}</button>
+
                               </div>
                             </div>
                             

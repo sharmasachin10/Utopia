@@ -4,8 +4,14 @@ import {APP_BASE_HREF} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+
+
+
+import { EqualValidator } from './equal-validator.directive';
+
 import { AppComponent }   from './app.component';
 import { WelcomeComponent , WelcomeService } from './welcome-form/index';
+
 
 import { app_routing } from './app.routing';
 
@@ -15,7 +21,7 @@ import { app_routing } from './app.routing';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule , HttpModule ,app_routing ],
-  declarations: [ AppComponent , WelcomeComponent ],
+  declarations: [ AppComponent , WelcomeComponent ,EqualValidator],
   providers: [ WelcomeService ,{provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap:    [ AppComponent ]
   

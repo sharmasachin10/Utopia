@@ -2,13 +2,14 @@ export interface Steps {
     name?: string;
     email?: string;
     password?: string;
+    confirmPassword: string;
     age?: number;
     gender?: string;
     profession?: string;
     about?:string;
     city?:string;
     news?: string;
-    art?: string;
+    art?: any[];
     health?: string;
     food?: string;
     sports?: string;
