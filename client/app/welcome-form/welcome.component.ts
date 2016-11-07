@@ -8,7 +8,7 @@ import { WelcomeService } from './welcome.service';
 
 @Component({ 
   moduleId: module.id,
-  templateUrl: 'welcome.component.html'
+  templateUrl: 'welcome.component.html'  
 })
 export class WelcomeComponent implements OnInit {
   	public person : Steps;  

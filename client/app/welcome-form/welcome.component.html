@@ -16,7 +16,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					
-          <div class="utopia_body_inner" *ngIf="shownext">
+          <div class="utopia_body_inner" [hidden]="!shownext">
             <form (ngSubmit)="step1(stepOneForm.valid)" novalidate  #stepOneForm="ngForm" >
     						<div class="title_utopia">
     							<h1>Welcome To Utopia</h1>
@@ -132,7 +132,7 @@
 
 
 
-          <div class="utopia_body_inner body_page_second" *ngIf="!shownext">
+          <div class="utopia_body_inner body_page_second" [hidden]="shownext" [ngClass]="{'animated':!shownext,'fadeInUp':!shownext}">
                   <form (ngSubmit)="step2()" #stepTwoForm="ngForm">
                     <h2 id="interest_utopia">Choose your <strong id="interests_utopia">Interests</strong></h2>
                     <div class="utopia_accordin">
