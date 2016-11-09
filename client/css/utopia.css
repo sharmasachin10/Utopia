@@ -1,5 +1,5 @@
 html {
-    max-width: 1366px;
+    width: 1366px;
 }
 body {
     margin: 0 auto;
@@ -10,7 +10,28 @@ body .container{
 	width: 100%;
 	padding:0;
 }
-
+.user_info {
+    display: block;
+    overflow: auto;
+}
+.half_width {
+    padding: 0;
+}
+.right_alert_msg {
+    width: 250px;
+}
+.alert_name {
+    margin-top: -22px;
+}
+.half_right {
+    float: right;
+}
+.ng-untouched.ng-pristine.ng-valid {
+    width: 1056px;
+}
+.space{
+    padding: 0px;
+}
 .utopia_header.container{
 	min-height: 86px;
 	background-color: #fff;
@@ -130,6 +151,7 @@ body .container{
     max-width: 1058px;
     width: 100%;
     font-family: "FiraSans OT Medium";
+    margin-bottom: 39px;
 }
 
 #name_utopia, #email_utopia, #profession_utopia, #city_utopia {
@@ -153,15 +175,18 @@ body .container{
  
 
 #about_utopia {
-	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border-color: -moz-use-text-color -moz-use-text-color #bf9959;
     border-style: none none solid;
     border-width: medium medium 1px;
-    font-family: "Helvetica Neue Light";
-    text-align: center;
     color: #666666;
+    font-family: "Helvetica Neue Light";
     font-size: 20pt;
-
+    text-align: left;
+    width: 100%;
+}
+.right_field {
+    float: right;
 }
 
 #password_utopia, #confirm_utopia, .fields_input {
@@ -172,23 +197,17 @@ body .container{
     color: #333333;
     font-family: "Helvetica Neue Light";
     font-size: 30pt;
-    max-width: 250px;
-    width: 100%;
+    width: 250px;
     word-spacing: 11px;
 }
 
 #name_utopia{
 	padding-bottom: 9px;
 	margin-top: 23px;
-	/*margin-bottom: 21px;*/
     font-family:  "Helvetica Neue Light";
     font-size:  20pt;
     color: #333333;
     text-align: left;
-}
-
-.alert-danger {
-  margin-top: 5px !important;
 }
 
 #email_utopia{
@@ -201,7 +220,7 @@ body .container{
 }
 
 #confirm_label{
-	margin-top:	20px;
+	margin-top:	23px;
 }
 
 /**************Accordin Start*****************/
@@ -230,16 +249,17 @@ button.accordion.active {
     border-bottom: none;
 }
 
-button.accordion:after {
-    content: '\02795';
-    font-size: 13px;
+button.accordion::after {
     color: #777;
+    content: "\f107";
     float: right;
+    font-family: FontAwesome;
+    font-size: 32px;
     margin-left: 5px;
 }
 
 button.accordion.active:after {
-    content: "\2796";
+    content: "\f106";
 }
 
 div.panel_utopia {
@@ -383,8 +403,8 @@ div.panel_utopia.show {
     }
 
     /** on active **/
-
-/*.utopia_selected:focus{
+/*
+.utopia_selected:focus{
         font-family: "FiraSans OT Light"
         font-size: 20pt;
         color: #ffffff;
@@ -393,19 +413,15 @@ div.panel_utopia.show {
         float: left;
     }*/
 
-input:required {
-    box-shadow:none !important;
+.utopia_row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.body_utopia {
+    padding: 0;
 }
 
-
-.select-cat {
-    background: #000000 none repeat scroll 0 0;
-    color: #ffffff;
-    float: left;
-    text-align: center;
-}
-
-@media screen and (min-width: 375px) and (max-width: 667px){
+@media screen and (min-width: 320px) and (max-width: 720px){
     .utopia_body_inner{
         margin-left: 0px;
         margin-right: 0px;
@@ -414,6 +430,9 @@ input:required {
     left: 15%;
     top: -1px;
     width: 36%;
+}
+.space{
+    width: 100%;
 }
 .bs-wizard > .bs-wizard-step:first-child > .progress {
     float: left;
@@ -431,8 +450,8 @@ input:required {
     margin-left: 0px;
     margin-right: 0px;
 }
-#password_utopia, #confirm_utopia, .fields_input {
-    max-width: 310px;
+#password_utopia, #confirm_utopia, .fields_input, #about_utopia{
+    max-width: 635px;
 }
 .utopia_accordin {
     margin-left: 0px;
@@ -441,4 +460,24 @@ input:required {
 div.panel_utopia.show {
     max-height: 690px;
 }
+}
+.select-cat {
+    background: #000000 none repeat scroll 0 0;
+    color: #ffffff;
+    float: left;
+    text-align: center;
+}
+.form_fields {
+    margin-bottom: 0;
+}
+.second_page_wizard {
+    margin-bottom: 40px;
+}
+.first_number {
+    background-color: #bf9959 !important;
+    color: #000000;
+}
+.second_number {
+    background-color: #bf9959 !important;
+    color: #000000;
 }

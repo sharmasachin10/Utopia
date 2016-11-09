@@ -98,5 +98,207 @@
         "food": "",
         "sports": "",
         "technology": ""
+    },
+    {
+        "name": "Jas",
+        "email": "test@gmail.com",
+        "password": "1234",
+        "confirmPassword": "1234",
+        "age": "23",
+        "gender": "M",
+        "profession": "Dev",
+        "about": "kkkk",
+        "city": "CHD",
+        "news": "",
+        "art": [
+            {
+                "name": "Photography",
+                "select": true
+            },
+            {
+                "name": "Poetry",
+                "select": true
+            },
+            {
+                "name": "Sculpture",
+                "select": true
+            },
+            {
+                "name": "History",
+                "select": false
+            },
+            {
+                "name": "Literature",
+                "select": false
+            },
+            {
+                "name": "Architecture",
+                "select": false
+            },
+            {
+                "name": "Films",
+                "select": false
+            },
+            {
+                "name": "Theater",
+                "select": false
+            }
+        ],
+        "health": "",
+        "food": "",
+        "sports": "",
+        "technology": ""
+    },
+    {
+        "name": "Sachin",
+        "email": "sachin@gmail.com",
+        "password": "123",
+        "confirmPassword": "123",
+        "age": "99",
+        "gender": "Male",
+        "profession": "Teacher",
+        "about": "Hi i am working as a software developer at chandigarh.",
+        "city": "Chandigarh",
+        "news": "",
+        "art": [
+            {
+                "name": "Photography",
+                "select": false
+            },
+            {
+                "name": "Poetry",
+                "select": false
+            },
+            {
+                "name": "Sculpture",
+                "select": true
+            },
+            {
+                "name": "History",
+                "select": false
+            },
+            {
+                "name": "Literature",
+                "select": true
+            },
+            {
+                "name": "Architecture",
+                "select": false
+            },
+            {
+                "name": "Films",
+                "select": false
+            },
+            {
+                "name": "Theater",
+                "select": false
+            }
+        ],
+        "health": "",
+        "food": "",
+        "sports": "",
+        "technology": ""
+    },
+    {
+        "image": "",
+        "name": "sunny",
+        "email": "sdfsdfsdfs@gmail.com",
+        "password": "123",
+        "confirmPassword": "123",
+        "age": "45",
+        "gender": "Female",
+        "profession": "sas",
+        "about": "sasasa",
+        "city": "zxzx",
+        "news": "",
+        "art": [
+            {
+                "name": "Photography",
+                "select": false
+            },
+            {
+                "name": "Poetry",
+                "select": false
+            },
+            {
+                "name": "Sculpture",
+                "select": true
+            },
+            {
+                "name": "History",
+                "select": true
+            },
+            {
+                "name": "Literature",
+                "select": true
+            },
+            {
+                "name": "Architecture",
+                "select": false
+            },
+            {
+                "name": "Films",
+                "select": false
+            },
+            {
+                "name": "Theater",
+                "select": false
+            }
+        ],
+        "health": "",
+        "food": "",
+        "sports": "",
+        "technology": ""
+    },
+    {
+        "image": "",
+        "name": "m.,mx.c",
+        "email": "sdfsdfsdfs@gmail.com",
+        "password": "123",
+        "confirmPassword": "123",
+        "age": "40",
+        "gender": "Female",
+        "profession": "sdas",
+        "about": "ds",
+        "city": "xs",
+        "news": "",
+        "art": [
+            {
+                "name": "Photography",
+                "select": false
+            },
+            {
+                "name": "Poetry",
+                "select": true
+            },
+            {
+                "name": "Sculpture",
+                "select": false
+            },
+            {
+                "name": "History",
+                "select": false
+            },
+            {
+                "name": "Literature",
+                "select": true
+            },
+            {
+                "name": "Architecture",
+                "select": false
+            },
+            {
+                "name": "Films",
+                "select": true
+            },
+            {
+                "name": "Theater",
+                "select": false
+            }
+        ],
+        "health": "",
+        "food": "",
+        "sports": "",
+        "technology": ""
     }
 ]

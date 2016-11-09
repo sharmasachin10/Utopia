@@ -1,4 +1,5 @@
 export interface Steps {
+    image?:string;
     name?: string;
     email?: string;
     password?: string;

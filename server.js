@@ -18,7 +18,9 @@ app.use(express.static(__dirname + '/client'));
 
 
 app.post('/api/users', (req, res) => {
+	"use strict"
 	let user = req.body;
+	
 	fs.readFile('users.json',function(err,content){
 		if(err) throw err;
 		var parseJson = JSON.parse(content);

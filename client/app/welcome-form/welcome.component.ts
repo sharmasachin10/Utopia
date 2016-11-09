@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,NgModule,ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
+import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
+import { ModalDirective  } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { Steps } from './steps.interface';
-
 import { WelcomeService } from './welcome.service';
+
+
+
 
 
 @Component({ 
@@ -16,11 +20,43 @@ export class WelcomeComponent implements OnInit {
     public files: string[] =[];
     public artCategory: any[] = []; 
 
+    public cropperSettings:CropperSettings;
+	public data:any;
 
-  	constructor( private router: Router,private welcomeService : WelcomeService) { }
+    @ViewChild('cropper', undefined) cropper:ImageCropperComponent;
+    
+    @ViewChild('cropModal') cropModal:ModalDirective ;
+ 
+  	constructor( private router: Router,private welcomeService : WelcomeService) {
+
+  		console.log(this.cropModal,'crop');
+
+	  	this.cropperSettings = new CropperSettings();
+	    this.cropperSettings.width = 200;
+	    this.cropperSettings.height = 200;
+
+	    this.cropperSettings.croppedWidth = 200;
+	    this.cropperSettings.croppedHeight = 200;
+
+	    this.cropperSettings.canvasWidth = 500;
+	    this.cropperSettings.canvasHeight = 300;
+
+	    this.cropperSettings.minWidth = 200;
+	    this.cropperSettings.minHeight = 200;
+
+	    this.cropperSettings.rounded = false;
+
+	    this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
+	    this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
+
+	    this.data = {};
+
+  	}
 
 	ngOnInit() {
+		this.file_srcs = '';
 	  	this.person = {
+	  		image:'',
 	  		name: '',
 	    	email: '',
 	    	password: '',
@@ -101,41 +137,28 @@ export class WelcomeComponent implements OnInit {
     }
 
 
-    
+    fileChangeListener($event) {
 
-    fileChange(input){
+	    var image:any = new Image();
+	    var file:File = $event.target.files[0];
+	    var myReader:FileReader = new FileReader();
+	    var that = this;
+	    myReader.onloadend = function (loadEvent:any) {
+	        image.src = loadEvent.target.result;
+	        that.cropper.setImage(image);
+	        that.cropModal.show();
 
-        // Loop through each picture file
-        for (var i = 0; i < input.files.length; i++) {
+	    };
 
-            this.files.push(input.files[i]);
-
-            // Create an img element and add the image file data to it
-            var img = document.createElement("img");
-            img.src = window.URL.createObjectURL(input.files[i]);
-
-            // Create a FileReader
-            var reader: any, target: EventTarget;
-            reader = new FileReader();
-
-            // Add an event listener to deal with the file when the reader is complete
-            reader.addEventListener("load", (event) => {
-                // Get the event.target.result from the reader (base64 of the image)
-                img.src = event.target.result;
-
-                // Resize the image
-                var resized_img = img;
-
-                // Push the img src (base64 string) into our array that we display in our html template
-                this.file_srcs = img.src;
-                console.log(this.file_srcs);
-            }, false);
-
-            reader.readAsDataURL(input.files[i]);
-        }
-    }
+	    myReader.readAsDataURL(file);
+	}
 
 
 
+	savecropImage(){
+		this.file_srcs = this.data.image;
+		// this.person.image = this.data.image;
+		this.cropModal.hide();
+	}
 
 }

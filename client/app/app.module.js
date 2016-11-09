@@ -13,6 +13,8 @@ var platform_browser_1 = require('@angular/platform-browser');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
+var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
+var ng2_img_cropper_1 = require('ng2-img-cropper');
 var equal_validator_directive_1 = require('./equal-validator.directive');
 var app_component_1 = require('./app.component');
 var index_1 = require('./welcome-form/index');
@@ -22,8 +24,8 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, app_routing_1.app_routing],
-            declarations: [app_component_1.AppComponent, index_1.WelcomeComponent, equal_validator_directive_1.EqualValidator],
+            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, app_routing_1.app_routing, ng2_bootstrap_1.ModalModule],
+            declarations: [app_component_1.AppComponent, index_1.WelcomeComponent, equal_validator_directive_1.EqualValidator, ng2_img_cropper_1.ImageCropperComponent],
             providers: [index_1.WelcomeService, { provide: common_1.APP_BASE_HREF, useValue: '/' }],
             bootstrap: [app_component_1.AppComponent]
         }), 

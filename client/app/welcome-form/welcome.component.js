@@ -10,6 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var ng2_img_cropper_1 = require('ng2-img-cropper');
+var ng2_bootstrap_1 = require('ng2-bootstrap/ng2-bootstrap');
 var welcome_service_1 = require('./welcome.service');
 var WelcomeComponent = (function () {
     function WelcomeComponent(router, welcomeService) {
@@ -18,9 +20,25 @@ var WelcomeComponent = (function () {
         this.files = [];
         this.artCategory = [];
         this.shownext = true;
+        console.log(this.cropModal, 'crop');
+        this.cropperSettings = new ng2_img_cropper_1.CropperSettings();
+        this.cropperSettings.width = 200;
+        this.cropperSettings.height = 200;
+        this.cropperSettings.croppedWidth = 200;
+        this.cropperSettings.croppedHeight = 200;
+        this.cropperSettings.canvasWidth = 500;
+        this.cropperSettings.canvasHeight = 300;
+        this.cropperSettings.minWidth = 200;
+        this.cropperSettings.minHeight = 200;
+        this.cropperSettings.rounded = false;
+        this.cropperSettings.cropperDrawSettings.strokeColor = 'rgba(255,255,255,1)';
+        this.cropperSettings.cropperDrawSettings.strokeWidth = 2;
+        this.data = {};
     }
     WelcomeComponent.prototype.ngOnInit = function () {
+        this.file_srcs = '';
         this.person = {
+            image: '',
             name: '',
             email: '',
             password: '',
@@ -89,30 +107,31 @@ var WelcomeComponent = (function () {
             console.log(error);
         });
     };
-    WelcomeComponent.prototype.fileChange = function (input) {
-        var _this = this;
-        // Loop through each picture file
-        for (var i = 0; i < input.files.length; i++) {
-            this.files.push(input.files[i]);
-            // Create an img element and add the image file data to it
-            var img = document.createElement("img");
-            img.src = window.URL.createObjectURL(input.files[i]);
-            // Create a FileReader
-            var reader, target;
-            reader = new FileReader();
-            // Add an event listener to deal with the file when the reader is complete
-            reader.addEventListener("load", function (event) {
-                // Get the event.target.result from the reader (base64 of the image)
-                img.src = event.target.result;
-                // Resize the image
-                var resized_img = img;
-                // Push the img src (base64 string) into our array that we display in our html template
-                _this.file_srcs = img.src;
-                console.log(_this.file_srcs);
-            }, false);
-            reader.readAsDataURL(input.files[i]);
-        }
+    WelcomeComponent.prototype.fileChangeListener = function ($event) {
+        var image = new Image();
+        var file = $event.target.files[0];
+        var myReader = new FileReader();
+        var that = this;
+        myReader.onloadend = function (loadEvent) {
+            image.src = loadEvent.target.result;
+            that.cropper.setImage(image);
+            that.cropModal.show();
+        };
+        myReader.readAsDataURL(file);
     };
+    WelcomeComponent.prototype.savecropImage = function () {
+        this.file_srcs = this.data.image;
+        // this.person.image = this.data.image;
+        this.cropModal.hide();
+    };
+    __decorate([
+        core_1.ViewChild('cropper', undefined), 
+        __metadata('design:type', ng2_img_cropper_1.ImageCropperComponent)
+    ], WelcomeComponent.prototype, "cropper", void 0);
+    __decorate([
+        core_1.ViewChild('cropModal'), 
+        __metadata('design:type', ng2_bootstrap_1.ModalDirective)
+    ], WelcomeComponent.prototype, "cropModal", void 0);
     WelcomeComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

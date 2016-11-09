@@ -1,4 +1,3 @@
-
 <div class="utopia">
 	<div class="utopia_header">
 		<div class="container header_wrapper">
@@ -17,7 +16,7 @@
 				<div class="col-md-12">
 					
           <div class="utopia_body_inner" [hidden]="!shownext">
-            <form (ngSubmit)="step1(stepOneForm.valid)" novalidate  #stepOneForm="ngForm" >
+            <form (ngSubmit)="step1(stepOneForm.valid)" novalidate  #stepOneForm="ngForm" class="form_fields">
     						<div class="title_utopia">
     							<h1>Welcome To Utopia</h1>
     						</div>
@@ -28,7 +27,7 @@
                       					
                       					</div>
                       				</div>
-                      					<a href="#" class="bs-wizard-dot">1</a>
+                      					<a href="#" class="bs-wizard-dot first_number">1</a>
                     			</div>
                     			<div class="col-md-6 bs-wizard-step complete"><!-- complete -->
                       				<div class="progress">
@@ -44,8 +43,40 @@
                   					<i *ngIf="!file_srcs" class="fa fa-camera" aria-hidden="true"></i>
                   					<img *ngIf="file_srcs" src="{{file_srcs}}" height="50" width="50">
                   				</label>
-                  				<input type="file" #input id="img-file"  (change)="fileChange(input)" style="display:none" />
+                  				<input type="file" #input id="img-file"  (change)="fileChangeListener($event)" style="display:none" />
                   			</div>
+
+                        <div class="modal fade" bsModal #cropModal="bs-modal" [config]="{backdrop: 'static'}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" aria-label="Close" (click)="cropModal.hide()">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title">Crop Image</h4>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="row">
+                                    <div class="col-md-8">
+                                      <img-cropper #cropper [image]="data" [settings]="cropperSettings"></img-cropper>
+                                    </div>
+                                    <div class="col-md-4">
+                                      <span class="result rounded" *ngIf="data.image" >
+                                        <img [src]="data.image" [width]="cropperSettings.croppedWidth" [height]="cropperSettings.croppedHeight">
+                                      </span>
+                                    </div>  
+                                  </div>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" (click)="cropModal.hide()">Close</button>
+                                <button type="button" class="btn btn-primary" (click)="savecropImage()">Save changes</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+
                   			<div class="utopia_body_content">
                   					<div class="row utopia_content_row">
                   						<div class="col-md-12">
@@ -66,41 +97,56 @@
 									            </div>
 			                  				</div>
 
-			                                <div class="user_info">
-			                  					<div class="col-md-6">
-				                                    <div class="form-group">
-				                  						<label id="password_label">Password</label>
-				                  						<input class="fields_input" [(ngModel)]="person.password"  validateEqual="confirmPassword" reverse="true" #password="ngModel"  required id="password_utopia" type="password" name="password">
-				                                    	<div [hidden]="password.valid || (password.pristine && !stepOneForm.submitted)" class="alert alert-danger">
-									              			Password is required
-									            		</div>
-				                                    </div>
-				                  					<div class="form-group">
-				                                     	<label>Age</label>
-				                  						<input class="fields_input" id="age_utopia" type="text" name="age" #age="ngModel" required [(ngModel)]="person.age">
-				                  						<div [hidden]="age.valid || (age.pristine && !stepOneForm.submitted)" class="alert alert-danger">
-									              			Age is required
-									            		</div>
-				                  					</div>
-			                                  	</div>
-			                  					<div class="col-md-6">
-			                                    	<div class="form-group">
-			                  							<label id="confirm_label">Confirm password</label>
-			                  							<input class="fields_input" validateEqual="password" reverse="false" #confirmPassword="ngModel"  id="confirm_utopia" required type="password" name="confirmPassword" [(ngModel)]="person.confirmPassword">
-			                  							<div [hidden]="confirmPassword.valid || (confirmPassword.pristine && !stepOneForm.submitted)" class="alert alert-danger">
-									              			Password mismatch
-									            		</div>
-			                  						</div>
-			                                    	<div class="form-group">
-			                                      		<label>Gender</label>
-			                  							<input class="fields_input" id="gender_utopia" type="text" name="gender" #gender="ngModel" required [(ngModel)]="person.gender">
-			                  							<div [hidden]="gender.valid || (gender.pristine && !stepOneForm.submitted)" class="alert alert-danger">
-									              			Gender is required
-									            		</div>
-			                  						</div>
-			                                  </div>
-			                  				</div>
+                                 <div class="user_info">
+                                    <div class="col-md-12 half_width">
+                                      <div class="form-group">
+                                        <div class="col-lg-6 half_width">
+                                          <label id="password_label">Password</label>
+                                          <input class="fields_input" [(ngModel)]="person.password"  validateEqual="confirmPassword" reverse="true" #password="ngModel"  required id="password_utopia" type="password" name="password">
+                                          <div [hidden]="password.valid || (password.pristine && !stepOneForm.submitted)" class="alert alert-danger right_alert_msg">
+                                          Password is required
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6 half_width">
+                                          <div class="form-group half_right">
+                                            <label id="confirm_label">Confirm password</label>
+                                            <input class="fields_input" validateEqual="password" reverse="false" #confirmPassword="ngModel"  id="confirm_utopia" required type="password" name="confirmPassword" [(ngModel)]="person.confirmPassword">
+                                            <div [hidden]="confirmPassword.valid || (confirmPassword.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+                                            Password mismatch
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-md-12 half_width">
+                                      <div class="form-group">
+                                        <div class="col-lg-6 half_width">
+                                          <label>Age</label>
+                                          <input class="fields_input" id="age_utopia" min="40" max="101" type="text" pattern="^[4-9]{1}[0-9]{1}|[0-1]{1}" name="age" #age="ngModel" required [(ngModel)]="person.age">
+                                          <div [hidden]="age.valid || (age.pristine && !stepOneForm.submitted)" class="alert alert-danger right_alert_msg">
+                                          Age is required
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6 half_width">
+                                          <div class="form-group half_right">
+                                            <label>Gender</label>
+                                            <!--input class="fields_input" id="gender_utopia" type="text" name="gender" #gender="ngModel" required [(ngModel)]="person.gender"-->
+                                            <select class="selectpicker fields_input" id="gender_utopia" type="text" name="gender" #gender="ngModel" required [(ngModel)]="person.gender">
+                                              <option value="Male" selected>Male</option>
+                                              <option value="Female">Female</option>
+                                              <option value="Other">Other</option>
+                                            </select>
+                                            <div [hidden]="gender.valid || (gender.pristine && !stepOneForm.submitted)" class="alert alert-danger">
+                                            Gender is required
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
 
+                                  </div>
+
+			                         
 
 			                                <div class="form-group">
 			                  					<label>Profession</label>
@@ -113,7 +159,7 @@
 
                                 			<div class="form-group">
                                   				<label>About</label>
-                  							  	<textarea class="input_fields" id="about_utopia" rows="4" name="about" #about="ngModel" [(ngModel)]="person.about"></textarea>
+                  							  	<textarea class="input_fields" id="about_utopia" rows="1" name="about" #about="ngModel" [(ngModel)]="person.about"></textarea>
                   							</div>
                                 
                                 			<div class="form-group">
@@ -134,6 +180,24 @@
 
           <div class="utopia_body_inner body_page_second" [hidden]="shownext" [ngClass]="{'animated':!shownext,'fadeInUp':!shownext}">
                   <form (ngSubmit)="step2()" #stepTwoForm="ngForm">
+                    <div class="row bs-wizard second_page_wizard">
+                      <div class="col-md-6 bs-wizard-step complete">
+                          <div class="progress">
+                            <div class="progress-bar">
+                            
+                            </div>
+                          </div>
+                            <a href="#" class="bs-wizard-dot">1</a>
+                      </div>
+                      <div class="col-md-6 bs-wizard-step complete"><!-- complete -->
+                          <div class="progress">
+                            <div class="progress-bar">
+                              
+                            </div>
+                          </div>
+                            <a href="#" class="bs-wizard-dot next_page second_number">2</a>
+                      </div>
+                    </div>
                     <h2 id="interest_utopia">Choose your <strong id="interests_utopia">Interests</strong></h2>
                     <div class="utopia_accordin">
                       <div class="container_wrapper">
