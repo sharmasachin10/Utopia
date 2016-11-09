@@ -16,7 +16,7 @@
 				<div class="col-md-12">
 					
           <div class="utopia_body_inner" [hidden]="!shownext">
-            <form (ngSubmit)="step1(stepOneForm.valid)" novalidate  #stepOneForm="ngForm" class="form_fields">
+            <form (ngSubmit)="step1(stepOneForm.valid,stepOneForm)" novalidate  #stepOneForm="ngForm" class="form_fields">
     						<div class="title_utopia">
     							<h1>Welcome To Utopia</h1>
     						</div>
@@ -81,7 +81,7 @@
                   					<div class="row utopia_content_row">
                   						<div class="col-md-12">
                   							<div class="form-group">
-                                  			 	<label>Name</label>
+                                  			 	<label>Name</label> 
                   							  	<input class="input_fields" id="name_utopia" [(ngModel)]="person.name" type="text" name="name" #name="ngModel" required>
 										        <div [hidden]="name.valid || (name.pristine && !stepOneForm.submitted)" class="alert alert-danger">
 										            Name is required
@@ -179,7 +179,7 @@
 
 
           <div class="utopia_body_inner body_page_second" [hidden]="shownext" [ngClass]="{'animated':!shownext,'fadeInUp':!shownext}">
-                  <form (ngSubmit)="step2()" #stepTwoForm="ngForm">
+                  <form (ngSubmit)="step2(stepTwoForm)" #stepTwoForm="ngForm">
                     <div class="row bs-wizard second_page_wizard">
                       <div class="col-md-6 bs-wizard-step complete">
                           <div class="progress">

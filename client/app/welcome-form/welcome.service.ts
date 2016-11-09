@@ -9,8 +9,12 @@ export class WelcomeService {
 
     save(user) {
         return this.http.post('/api/users', user )
-        .map((response: Response) => {
-               
+        .map((response: Response) => {       
         });
+    }
+
+    imageUpload(item){
+    	return this.http.post('/api/imageupload',item)
+    	.map((response: Response) =>response.json());
     }
 }

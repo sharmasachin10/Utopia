@@ -29,8 +29,6 @@ export class WelcomeComponent implements OnInit {
  
   	constructor( private router: Router,private welcomeService : WelcomeService) {
 
-  		console.log(this.cropModal,'crop');
-
 	  	this.cropperSettings = new CropperSettings();
 	    this.cropperSettings.width = 200;
 	    this.cropperSettings.height = 200;
@@ -113,7 +111,7 @@ export class WelcomeComponent implements OnInit {
   		this.person.art = this.artCategory;
   	}
 
-  	step1(isValid: boolean) {
+  	step1(isValid: boolean,form) {
   		if(isValid){
     		this.shownext = false;
     		window.scrollTo(0,0);
@@ -121,11 +119,12 @@ export class WelcomeComponent implements OnInit {
   	}
 
 
-    step2(){
+    step2(form){
+
     	this.welcomeService.save(this.person)
     		.subscribe(
 	            data => {
-	                 alert('Successfully Save');
+	                 alert('Successfully Save'); 
 	                 this.ngOnInit();
 	                 this.shownext = true;
 	                 window.scrollTo(0,0);
@@ -139,15 +138,15 @@ export class WelcomeComponent implements OnInit {
 
     fileChangeListener($event) {
 
-	    var image:any = new Image();
-	    var file:File = $event.target.files[0];
-	    var myReader:FileReader = new FileReader();
-	    var that = this;
+	    let image:any = new Image();
+	    let file:File = $event.target.files[0];
+	    let myReader:FileReader = new FileReader();
+	    let that = this;
+	    
 	    myReader.onloadend = function (loadEvent:any) {
 	        image.src = loadEvent.target.result;
 	        that.cropper.setImage(image);
 	        that.cropModal.show();
-
 	    };
 
 	    myReader.readAsDataURL(file);
@@ -157,8 +156,31 @@ export class WelcomeComponent implements OnInit {
 
 	savecropImage(){
 		this.file_srcs = this.data.image;
-		// this.person.image = this.data.image;
-		this.cropModal.hide();
+		let formData: FormData = new FormData();
+        formData.append("image",this.dataURItoBlob(this.data.image));
+        this.welcomeService.imageUpload(formData)
+    		.subscribe(
+	            data => {
+	                this.person.image = data.name;
+	                this.cropModal.hide();
+	            },
+	            error => {
+	            	console.log(error);
+	            });        
 	}
+
+
+	dataURItoBlob(dataURI) {
+	    var byteString = atob(dataURI.split(',')[1]);
+	    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+	    var ab = new ArrayBuffer(byteString.length);
+	    var ia = new Uint8Array(ab);
+	    for (var i = 0; i < byteString.length; i++) {
+	        ia[i] = byteString.charCodeAt(i);
+	    }
+	    var bb = new Blob([ab],{type:mimeString });
+	    return bb;
+	}
+
 
 }

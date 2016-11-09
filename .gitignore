@@ -34,5 +34,5 @@ typings
 .node_repl_history
 
 # Generated files
-client/app/**/*.js
-client/app/**/*.js.map
+/client/app/**/*.js
+/client/app/**/*.js.map

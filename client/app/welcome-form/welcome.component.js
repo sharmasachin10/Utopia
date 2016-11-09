@@ -20,7 +20,6 @@ var WelcomeComponent = (function () {
         this.files = [];
         this.artCategory = [];
         this.shownext = true;
-        console.log(this.cropModal, 'crop');
         this.cropperSettings = new ng2_img_cropper_1.CropperSettings();
         this.cropperSettings.width = 200;
         this.cropperSettings.height = 200;
@@ -89,13 +88,13 @@ var WelcomeComponent = (function () {
         });
         this.person.art = this.artCategory;
     };
-    WelcomeComponent.prototype.step1 = function (isValid) {
+    WelcomeComponent.prototype.step1 = function (isValid, form) {
         if (isValid) {
             this.shownext = false;
             window.scrollTo(0, 0);
         }
     };
-    WelcomeComponent.prototype.step2 = function () {
+    WelcomeComponent.prototype.step2 = function (form) {
         var _this = this;
         this.welcomeService.save(this.person)
             .subscribe(function (data) {
@@ -120,9 +119,28 @@ var WelcomeComponent = (function () {
         myReader.readAsDataURL(file);
     };
     WelcomeComponent.prototype.savecropImage = function () {
+        var _this = this;
         this.file_srcs = this.data.image;
-        // this.person.image = this.data.image;
-        this.cropModal.hide();
+        var formData = new FormData();
+        formData.append("image", this.dataURItoBlob(this.data.image));
+        this.welcomeService.imageUpload(formData)
+            .subscribe(function (data) {
+            _this.person.image = data.name;
+            _this.cropModal.hide();
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    WelcomeComponent.prototype.dataURItoBlob = function (dataURI) {
+        var byteString = atob(dataURI.split(',')[1]);
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        var bb = new Blob([ab], { type: mimeString });
+        return bb;
     };
     __decorate([
         core_1.ViewChild('cropper', undefined), 

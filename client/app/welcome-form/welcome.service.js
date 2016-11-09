@@ -20,6 +20,10 @@ var WelcomeService = (function () {
             .map(function (response) {
         });
     };
+    WelcomeService.prototype.imageUpload = function (item) {
+        return this.http.post('/api/imageupload', item)
+            .map(function (response) { return response.json(); });
+    };
     WelcomeService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
