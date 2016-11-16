@@ -1,0 +1,25 @@
+{
+  "name": "Utopia",
+  "description": "",
+  "scripts": {
+    "postdeploy": "npm start"
+  },
+  "env": {
+    "undefined": {
+      "generator": "secret"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
