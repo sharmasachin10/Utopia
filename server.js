@@ -57,9 +57,9 @@ app.post('/api/imageupload', upload.single('image'), (req, res) => {
 
 
 // redirect all others to the index (HTML5 history)
-app.all('/*', function(req, res) {
-    res.sendFile(path.join(__dirname,'./client/index.html'));
-});
+// app.all('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname,'./client/index.html'));
+// });
 
 app.listen(process.env.PORT ||3000);
 
